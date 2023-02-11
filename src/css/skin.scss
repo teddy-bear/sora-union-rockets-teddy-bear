@@ -1,0 +1,60 @@
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 30px;
+    padding-right: 70px;
+    line-height: 1;
+}
+
+.box {
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    padding: 10px;
+    position: relative;
+}
+
+//
+//  Shared classes
+//  ____________________________________________
+.rockets-list {
+    span[class*='icon-'] {
+        //cursor: pointer;
+    }
+
+    > header {
+        position: relative;
+
+        .icon-add > svg {
+            height: 34px;
+            color: red;
+            top: 0;
+            right: 0;
+            position: absolute;
+            width: auto;
+        }
+    }
+
+    .list {
+        .item {
+            .icon-delete > svg {
+                height: 24px;
+                color: #cdcdcd;
+                top: 10px;
+                right: 10px;
+                position: absolute;
+                width: auto;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.box-add {
+    .btn-add {
+        margin-top: 20px;
+        width: 100%;
+    }
+}

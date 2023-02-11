@@ -11,7 +11,7 @@ export default function ComboBox() {
         year: number,
     }
 
-    const [item, setItem] = useState<PropsType | null>(null);       // holds whole selected object
+    const [item, setItem] = useState<PropsType | undefined>();       // holds whole selected object
     const [input, setInput] = useState("");                          // shows string value within a box
     const [options, setOptions] = useState<Array<object>>([]);
 
@@ -28,12 +28,13 @@ export default function ComboBox() {
                 onInputChange={(e, v) => {
                     setInput(v);
                 }}
-                onChange={(e, v) => setItem(v)}         //todo: need to resolve arg type here
+                //onChange={(e, v) => setItem(v)}         //todo: need to resolve arg type here
                 id="combo-box-demo"
                 options={options}
                 sx={{width: 300}}
                 renderInput={(params) => <TextField {...params} label="Movie"/>}
             />
+
         </>
     );
 }
