@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import './css/skin.scss';
-//import SearchField from "./searchField";
-//import ComboBox from "./comboBox";
 import Grid from "@mui/material/Grid";
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -12,7 +10,7 @@ import {Button} from "@mui/material";
 
 export default function App() {
 
-    const [reviews, setReviews] = useState<Array<object>>([]);
+    const [reviews, setReviews] = useState<Array<ReviewType>>([]);
 
     interface ReviewType {
         label: string,
@@ -39,21 +37,17 @@ export default function App() {
         setReviews(arr);
     }
 
-    // let content = 'no blocks';
-
-    const content = reviews.length ? reviews.map((item, index) => {
-        return (
-            <div className='item box'
-                 key={index}
-            >
-                <h3>{item.label}</h3>
-                <div className="name">{item.year}</div>
-                <span className="icon-delete">
+    const content = reviews.length ? reviews.map((item, index) => (
+        <div className='item box'
+             key={index}
+        >
+            <h3>{item.label}</h3>
+            <div className="name">{item.year}</div>
+            <span className="icon-delete">
                     <DeleteIcon onClick={() => removeItem(item)}/>
                 </span>
-            </div>
-        );
-    }) : 'no reviews yet';
+        </div>
+    )) : 'no reviews yet';
 
     return (
         <div className="App">
@@ -77,6 +71,7 @@ export default function App() {
                     <div className="box box-add">
                         <h1>{item && item.label}</h1>
                         <h2>{item && item.year}</h2>
+                        {/* todo: 1) Add multiple select, 2) prevent duplicated edits */}
                         <Autocomplete
                             filterOptions={(x) => x}
                             onInputChange={(e, v) => {
