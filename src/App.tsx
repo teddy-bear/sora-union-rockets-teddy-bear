@@ -28,9 +28,8 @@ export default function App() {
         setOptions(Movies);
     }, []);
 
-    const removeItem = (review: object) => {
+    const removeItem = (review: ReviewType) => {
         const arr = reviews.filter((item) => {
-            // @ts-ignore
             return item.label !== review.label;
         })
 
