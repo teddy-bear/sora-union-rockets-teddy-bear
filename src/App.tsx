@@ -98,20 +98,28 @@ export default function App() {
         <div className='item box'
              key={index}
         >
-            <h3>{item.login}</h3>
-            <img src={item.avatar_url} alt={item.login}/>
-            <div className="name">{item.id}</div>
-            <span className="icon-delete">
-                    <DeleteIcon onClick={() => removeItem(item)}/>
-                </span>
+            <header>
+                <div className="avatar">
+                    <img src={item.avatar_url} alt={item.login}/>
+                </div>
+                <h3>{item.login}</h3>
+            </header>
+            <small className="user-id">id: {item.id}</small>
+            <DeleteIcon className="icon-delete" onClick={() => removeItem(item)}/>
         </div>
     )) : 'no reviews yet';
 
     /**
      * Render selected user
      */
-    const selectedUser = item ? <div className='current-user'>
-            <h3>{item.login}</h3><img src={item.avatar_url} alt={item.login}/></div>
+    const selectedUser = item ? <div className='current-user box item'>
+            <header>
+                <div className="avatar">
+                    <img src={item.avatar_url} alt={item.login}/>
+                </div>
+                <h3>{item.login}</h3>
+            </header>
+        </div>
         : null
 
     return (
@@ -122,7 +130,7 @@ export default function App() {
                     <div className="rockets-list">
                         <header>
                             <h1>List of Rockets</h1>
-                            <span className='icon-add'><RocketLaunchIcon/></span>
+                            <RocketLaunchIcon className='icon-add'/>
                         </header>
                         <div className="list">
                             {savedUsers}
@@ -133,7 +141,7 @@ export default function App() {
                     <header>
                         <h1>Add new Rocket</h1>
                     </header>
-                    <div className="box box-add">
+                    <div className="box-add">
                         {selectedUser}
                         {/* todo: 1) Add multiple select, 2) prevent duplicated entries */}
                         <Autocomplete

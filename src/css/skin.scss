@@ -14,6 +14,7 @@ h1 {
     margin-bottom: 20px;
     padding: 10px;
     position: relative;
+    background: #f9f9ff;
 }
 
 //
@@ -27,27 +28,43 @@ h1 {
     > header {
         position: relative;
 
-        .icon-add > svg {
+        .icon-add {
             height: 34px;
-            color: red;
+            color: #db0000;
             top: 0;
             right: 0;
             position: absolute;
             width: auto;
         }
     }
+}
 
-    .list {
-        .item {
-            .icon-delete > svg {
-                height: 24px;
-                color: #cdcdcd;
-                top: 10px;
-                right: 10px;
-                position: absolute;
-                width: auto;
-                cursor: pointer;
-            }
+.item {
+    header {
+        display: flex;
+        align-items: center;
+    }
+
+    .avatar {
+        padding: 0 10px;
+
+        img {
+            width: 40px;
+            height: auto;
+        }
+    }
+
+    .icon-delete {
+        height: 24px;
+        color: #cdcdcd;
+        top: 10px;
+        right: 10px;
+        position: absolute;
+        width: auto;
+        cursor: pointer;
+
+        &:hover {
+            color: #bbb;
         }
     }
 }
