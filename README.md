@@ -1,6 +1,9 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Sora Union FE home task
+Search users via autocomplete field using api.github.com. \
+Possibility to save/edit search results into local state. \
+-- \
+Connected MUI library for the autocomplete field and styling. \
+SASS module for css compile.
 
 ## Available Scripts
 
