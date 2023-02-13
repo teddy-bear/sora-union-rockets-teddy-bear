@@ -172,7 +172,7 @@ export default function App() {
                             }}
                             id="combo-box"
                             options={options}
-                            renderInput={(params) => <TextField {...params} label="Movie"/>}
+                            renderInput={(params) => <TextField {...params} label="Search Git Users"/>}
                         />
                         <Button className='btn-add' variant="contained" onClick={() => {
                             if (input) {
