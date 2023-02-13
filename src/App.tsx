@@ -1,6 +1,5 @@
-// todo: split into modules
-// 2) apply Context to pass props types
-// 3) debounce/throttle for search optimization
+// todo points:
+// debounce/throttle for search optimization
 
 import React, {useState} from 'react';
 import './css/skin.scss';
@@ -11,31 +10,52 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import {Button} from "@mui/material";
 
+type GitUser = {
+    login: string,
+    label?: string,
+    id: number,
+    node_id: string
+    avatar_url: string,
+    gravatar_id?: any,
+    url: string,
+    html_url: string
+    followers_url: string
+    following_url: string
+    gists_url: string
+    starred_url: string
+    subscriptions_url: string
+    organizations_url: string
+    repos_url: string
+    events_url: string
+    received_events_url: string
+    type: string,
+    site_admin: boolean,
+    score: number
+};
+
+/**
+ * Render user block
+ * @param avatar_url
+ * @param html_url
+ * @param login
+ * @param id
+ * @constructor
+ */
+function User({avatar_url, html_url, login, id}: GitUser) {
+    return (
+        <>
+            <header>
+                <div className="avatar">
+                    <img src={avatar_url} alt={login}/>
+                </div>
+                <h3><a href={html_url} target='_blank'>{login}</a></h3>
+            </header>
+            <small className="user-id">id: {id}</small>
+        </>
+    )
+}
+
 export default function App() {
-
-    type GitUser = {
-        login: string,
-        label?: string,
-        id: number,
-        node_id: string
-        avatar_url: string,
-        gravatar_id?: any,
-        url: string,
-        html_url: string
-        followers_url: string
-        following_url: string
-        gists_url: string
-        starred_url: string
-        subscriptions_url: string
-        organizations_url: string
-        repos_url: string
-        events_url: string
-        received_events_url: string
-        type: string,
-        site_admin: boolean,
-        score: number
-    };
-
     /**
      * Do search
      * optimized for username search, Eg: mike, sam etc.
@@ -98,13 +118,7 @@ export default function App() {
         <div className='item box'
              key={index}
         >
-            <header>
-                <div className="avatar">
-                    <img src={item.avatar_url} alt={item.login}/>
-                </div>
-                <h3>{item.login}</h3>
-            </header>
-            <small className="user-id">id: {item.id}</small>
+            <User {...item}/>
             <DeleteIcon className="icon-delete" onClick={() => removeItem(item)}/>
         </div>
     )) : 'no reviews yet';
@@ -113,12 +127,7 @@ export default function App() {
      * Render selected user
      */
     const selectedUser = item ? <div className='current-user box item'>
-            <header>
-                <div className="avatar">
-                    <img src={item.avatar_url} alt={item.login}/>
-                </div>
-                <h3>{item.login}</h3>
-            </header>
+            <User {...item}/>
         </div>
         : null
 
