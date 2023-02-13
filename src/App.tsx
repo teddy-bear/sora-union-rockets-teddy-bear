@@ -1,5 +1,5 @@
 // todo points:
-// debounce/throttle for search optimization
+// debounce/throttle for search keystrokes optimization
 
 import React, {useState} from 'react';
 import './css/skin.scss';
@@ -48,7 +48,7 @@ function User({avatar_url, html_url, login, id}: GitUser) {
                 <div className="avatar">
                     <img src={avatar_url} alt={login}/>
                 </div>
-                <h3><a href={html_url} target='_blank'>{login}</a></h3>
+                <h3><a href={html_url} rel="noreferrer" target='_blank'>{login}</a></h3>
             </header>
             <small className="user-id">id: {id}</small>
         </>
@@ -58,7 +58,7 @@ function User({avatar_url, html_url, login, id}: GitUser) {
 export default function App() {
     /**
      * Do search
-     * optimized for username search, Eg: mike, sam etc.
+     * optimized for username string search, Eg: mike, sam etc.
      * @param needle
      */
     const getUserData = async (needle: string) => {
@@ -163,7 +163,7 @@ export default function App() {
                                 setInput(value);
                                 if (value) {
                                     const arr = usersGit && usersGit.filter((item) => {
-                                        return item.login == value;
+                                        return item.login === value;
                                     })
                                     setItem(arr[0]);
                                 } else {
@@ -177,7 +177,7 @@ export default function App() {
                         <Button className='btn-add' variant="contained" onClick={() => {
                             if (input) {
                                 const arr = usersGit && usersGit.filter((item) => {
-                                    return item.login == input;
+                                    return item.login === input;
                                 })
                                 setLocalUsers([...localUsers, arr[0] as GitUser]);
                             }
