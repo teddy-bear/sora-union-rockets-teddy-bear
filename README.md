@@ -1,7 +1,7 @@
 # Sora Union FE home task
 Search users via autocomplete field using api.github.com. \
 Possibility to save/edit search results into local state. \
--- \
+---- \
 Connected MUI library for the autocomplete field and styling. \
 SASS module for css compile.
 
